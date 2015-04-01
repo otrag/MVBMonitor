@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Str1">#BA0A6B</color>
+    <color name="Str2">#034C9B</color>
+    <color name="Str3">#FDD100</color>
+    <color name="Str4">#94BB3C</color>
+    <color name="Str5">#B88C51</color>
+    <color name="Str6">#824F73</color>
+    <color name="Str8">#F39002</color>
+    <color name="Str9">#0D7B5E</color>
+    <color name="Str10">#88A3D5</color>
+    <color name="Str93">#694F7A</color>
+    <color name="Str94">#0050A1</color>
+    <color name="Str95">#53A431</color>
+    <color name="Bus51">#105AA3</color>
+    <color name="Bus52">#F29001</color>
+    <color name="Bus53">#FFD100</color>
+    <color name="Bus54">#91C23A</color>
+    <color name="Bus55">#B48856</color>
+    <color name="Bus56">#D3BF00</color>
+    <color name="Bus57">#E30075</color>
+    <color name="Bus58">#009BA6</color>
+    <color name="Bus59">#297B59</color>
+    <color name="Bus61">#8AA4D9</color>
+    <color name="Bus69">#89567C</color>
+    <color name="Bus71">#E50008</color>
+    <color name="Bus73">#3D4245</color>
+    <color name="Bus91">#DC040F</color>
+    <color name="Bus92">#EB8303</color>
+    <color name="Bus96">#A0874D</color>
+
+
+    <color name="other">#ff838383</color>
+
+
+</resources>
