@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "de.randec.fahrplanmd2"
+        applicationId "de.randec.MVBMonitor"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
