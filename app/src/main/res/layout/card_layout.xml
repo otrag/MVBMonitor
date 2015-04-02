@@ -9,7 +9,7 @@
 
   <RelativeLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent">
+      android:layout_height="wrap_content">
 
       <ImageView
         android:id="@+id/icon"
@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/txtDepartTime"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/icon"
         android:text="Name"
@@ -49,16 +49,27 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="2dp"/>
 
-   <!-- <TextView
-        android:id="@+id/txtDirection"
+      <ImageButton
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Surname"
-        android:gravity="center_vertical"
-        android:textSize="14dp"
-        android:layout_below="@id/txtDepartTime"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"/> -->
+        android:layout_height="fill_parent"
+        android:layout_below="@id/title"
+        android:layout_alignParentRight="true"
+          android:src="@drawable/ic_alarm_plus"
+           />
+
+
+      <!-- <TextView
+           android:id="@+id/txtDirection"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Surname"
+           android:gravity="center_vertical"
+           android:textSize="14dp"
+           android:layout_below="@id/txtDepartTime"
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="5dp"/> -->
 
 
     </RelativeLayout>

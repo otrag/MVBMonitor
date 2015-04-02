@@ -15,13 +15,15 @@ package de.randec.MVBMonitor;
 public class Journey {
 
     String departTime;
+    String departDate;
     String direction;
     String line;
 
-    public Journey(String departTime, String direction,String line) {
+    public Journey(String departTime, String direction,String line, String departDate) {
         setDepartTime(departTime);
         setDirection(direction);
         setLine(line);
+        setDepartDate(departDate);
     }
 
     public String getDirection() {
@@ -36,6 +38,8 @@ public class Journey {
         return line;
     }
 
+    public String getDepartDate() {return departDate; }
+
     public void setDepartTime(String departTime) {
         this.departTime = departTime;
     }
@@ -47,6 +51,8 @@ public class Journey {
     public void setLine(String line) {
         this.line = line;
     }
+
+    public void setDepartDate(String departDate) {this.departDate = departDate;}
 
     public String toString(){
         return  "Linie: "+getLine()+"\n"+

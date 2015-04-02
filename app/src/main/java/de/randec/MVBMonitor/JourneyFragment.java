@@ -87,6 +87,7 @@ import java.util.Calendar;
             return rootView;
         }
 
+
     private class DownloadJourneys extends AsyncTask<String, Void, String> {
 
         private String jsonData;
@@ -111,10 +112,11 @@ import java.util.Calendar;
                     json = jArray.getJSONObject(i);
 
                     String departTime = json.getString("ti");
+                    String departDate = json.getString("da");
                     String direction = json.getString("st");
                     if(direction.contains("Magdeburg,")) direction = direction.replace("Magdeburg,","");
                     String line = json.getString("pr");
-                    Journey myJourney = new Journey(departTime, direction, line);
+                    Journey myJourney = new Journey(departTime, direction, line, departDate);
                     myJourneys.add(myJourney);
 
                 }
@@ -136,7 +138,7 @@ import java.util.Calendar;
             stationName.setText(getArguments().getString(ARG_STATION_NAME));
             //lvResult.setAdapter(adapter);
 
-            JourneyAdapter ja = new JourneyAdapter(myJourneys);
+            JourneyAdapter ja = new JourneyAdapter(myJourneys, getActivity());
             recList.setAdapter(ja);
 
         }
