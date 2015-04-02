@@ -11,4 +11,4 @@ timetables for Magdeburg, Germany
 
 https://owncloud.randec.de/index.php/s/FM8fV0bT2rcDAZL
 
-![QR-Code](https://owncloud.randec.de/index.php/s/GWRWYyOfJfdpIwn)
+![QR-Code](/files/qrcode.png)
