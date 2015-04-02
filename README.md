@@ -5,7 +5,7 @@ timetables for Magdeburg, Germany
 
 ##Screenshot
 
-![Screenshot](https://owncloud.randec.de/index.php/s/UNpstBmP9miXTo6)
+![Screenshot](/files/mvb1.png)
 
 ##APK
 
