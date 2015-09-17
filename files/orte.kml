@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Placemark>
+<name>Gerwischer Str.</name>
+<description></description>
+<Point>
+<coordinates>11.668340116739273,52.117244951670415,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Allee Center</name>
+<description></description>
+<Point>
+<coordinates>11.638198792934418,52.13049807080945,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Olvenstedter Str</name>
+<description></description>
+<Point>
+<coordinates>11.618229746818542,52.133902932643025,0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Hasselbachplatz</name>
+<description></description>
+<Point>
+<coordinates>11.627630889415741,52.120552013428664,0</coordinates>
+</Point>
+</Placemark>
+</kml>
