@@ -44,6 +44,7 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
     }
 
 
+
     @Override
     public int getItemCount() {
         return journeyList.size();
@@ -55,14 +56,19 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
 
         journeyViewHolder.vTitle.setText(j.getLine()+"  "+j.getDirection());
         journeyViewHolder.vDepartTime.setText(j.getDepartTime());
+        if(j.getDelayMinutes()!= null)journeyViewHolder.vDepartTime.append("+ "+j.getDelayMinutes()+ "min");
 
-        switch (j.getLine().substring(0,3)){
-            case "Bus":
-                journeyViewHolder.vIcon.setImageResource(R.drawable.ic_bus_grey600_48dp);
-                break;
-            default:
-                journeyViewHolder.vIcon.setImageResource(R.drawable.ic_tram_grey600_48dp);
-                break;
+        try {
+            switch (j.getLine().substring(0, 3)) {
+                case "Bus":
+                    journeyViewHolder.vIcon.setImageResource(R.drawable.ic_bus_grey600_48dp);
+                    break;
+                default:
+                    journeyViewHolder.vIcon.setImageResource(R.drawable.ic_tram_grey600_48dp);
+                    break;
+            }
+        }catch (Exception e){
+            Log.d("error","switch icon broken"+j.getLine()+"Linie");
         }
 
         switch (j.getLine()){

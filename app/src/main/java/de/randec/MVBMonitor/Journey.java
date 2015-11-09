@@ -18,12 +18,18 @@ public class Journey {
     String departDate;
     String direction;
     String line;
+    String status;
+    String delayMinutes;
+    String delayTime;
 
-    public Journey(String departTime, String direction,String line, String departDate) {
+    public Journey(String departTime, String direction,String line, String departDate, String status, String delayMinutes, String delayTime) {
         setDepartTime(departTime);
         setDirection(direction);
         setLine(line);
         setDepartDate(departDate);
+        setStatus(status);
+        setDelayMinutes(delayMinutes);
+        setDelayTime(delayTime);
     }
 
     public String getDirection() {
@@ -40,6 +46,12 @@ public class Journey {
 
     public String getDepartDate() {return departDate; }
 
+    public String getStatus() {return status; }
+
+    public String getDelayMinutes() {return delayMinutes; }
+
+    public String getDelayTime() {return delayTime; }
+
     public void setDepartTime(String departTime) {
         this.departTime = departTime;
     }
@@ -53,6 +65,12 @@ public class Journey {
     }
 
     public void setDepartDate(String departDate) {this.departDate = departDate;}
+
+    public void setStatus(String status) {this.status = status;}
+
+    public void setDelayMinutes(String delayMinutes) {this.delayMinutes = delayMinutes;}
+
+    public void setDelayTime(String delayTime) {this.delayTime = delayTime;}
 
     public String toString(){
         return  "Linie: "+getLine()+"\n"+

@@ -157,6 +157,13 @@ public class MainActivity extends ActionBarActivity {
         public int getCount() {
             return this.fragments.size();
         }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            //return the station name as text for the Pager coresponding to layout
+            return this.fragments.get(position).getArguments().getCharSequence("station_name");
+            //return "Page " + (position + 1);
+        }
     }
 
     private class DownloadStations extends AsyncTask<String, Void, String> {
@@ -171,14 +178,18 @@ public class MainActivity extends ActionBarActivity {
 
                 jsonData = Downloader.downloadJson(urls[0]);
                 //jsonArray needs string to start with [
-                jsonData = jsonData.substring(jsonData.indexOf('['));
+                //jsonData = jsonData.substring(jsonData.indexOf('['));
+                //JSONArray jArray = new JSONArray(jsonData);
+                JSONObject allData = new JSONObject(jsonData);
 
-                JSONArray jArray = new JSONArray(jsonData);
+
+                JSONArray jArray = allData.getJSONArray("stops");
                 //parse Array and add Fragments with stopId and stopName to list
                 for(int i=0;i<jArray.length();i++) {
                     json = jArray.getJSONObject(i);
                     String stopName = json.getString("name");
                     if(stopName.contains("Magdeburg,")) stopName = stopName.replace("Magdeburg,","");
+                    if(stopName.contains("Magdeburg")) stopName = stopName.replace("Magdeburg","");
                     int stopId = Integer.parseInt(json.getString("extId"));
                     fList.add(JourneyFragment.newInstance(stopId, stopName));
                 }
@@ -200,6 +211,13 @@ public class MainActivity extends ActionBarActivity {
 
             // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.pager);
+            /*
+            Trying to get next page indicator
+            mViewPager.setPageMargin(-300);
+            mViewPager.setOffscreenPageLimit(2);
+            mViewPager.setHorizontalFadingEdgeEnabled(true);
+            mViewPager.setFadingEdgeLength(30);
+            */
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
 

@@ -44,7 +44,7 @@ import java.util.Calendar;
         private static final String ARG_STATION_ID = "station_id";
         private static final String ARG_STATION_NAME ="station_name";
 
-        protected TextView stationName;
+       // protected TextView stationName;
         protected RecyclerView recList;
 
         /**
@@ -66,7 +66,7 @@ import java.util.Calendar;
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment, container, false);
-            stationName = (TextView) rootView.findViewById(R.id.txtStationName);
+            //stationName = (TextView) rootView.findViewById(R.id.txtStationName);
 
 
             recList = (RecyclerView) rootView.findViewById(R.id.cardList);
@@ -82,6 +82,8 @@ import java.util.Calendar;
             int minutes=cal.get(Calendar.MINUTE);
 
             String query = String.format(getString(R.string.queryJourneys),getArguments().getInt(ARG_STATION_ID),hours,minutes);
+            Log.d("query2", query);
+            System.out.println(query);
             new DownloadJourneys().execute(query);
 
             return rootView;
@@ -102,12 +104,16 @@ import java.util.Calendar;
             try{
 
                 jsonData = Downloader.downloadJson(myUrl);
-                //jsonArray needs string to start with [
-                jsonData = jsonData.substring(jsonData.indexOf("[", jsonData.indexOf("[") + 1));
-                myJourneys = new ArrayList<>();
-                Log.d("onPostExecute", jsonData);
 
-                JSONArray jArray = new JSONArray(jsonData);
+                //json object starts with {
+                jsonData = jsonData.substring(jsonData.indexOf('{'));
+                myJourneys = new ArrayList<>();
+                //Log.d("onPostExecute", jsonData);
+                JSONObject allData = new JSONObject(jsonData);
+                //journey json array contains the journeys
+                JSONArray jArray = allData.getJSONArray("journey");
+
+                //JSONArray jArray = new JSONArray(jsonData);
                 for(int i=0;i<jArray.length();i++) {
                     json = jArray.getJSONObject(i);
 
@@ -116,7 +122,11 @@ import java.util.Calendar;
                     String direction = json.getString("st");
                     if(direction.contains("Magdeburg,")) direction = direction.replace("Magdeburg,","");
                     String line = json.getString("pr");
-                    Journey myJourney = new Journey(departTime, direction, line, departDate);
+                    JSONObject jsonDelay = json.getJSONObject("rt");
+                    String status =jsonDelay.getString("status");
+                    String delayMinutes =jsonDelay.getString("dlm");
+                    String delayTime =jsonDelay.getString("dlt");
+                    Journey myJourney = new Journey(departTime, direction, line, departDate, status, delayMinutes, delayTime);
                     myJourneys.add(myJourney);
 
                 }
@@ -135,7 +145,7 @@ import java.util.Calendar;
             //getActivity returns the Context maybe check if not null
            // ArrayAdapter<Journey> adapter = new ArrayAdapter<>(getActivity(),R.layout.list_item,myJourneys);
 
-            stationName.setText(getArguments().getString(ARG_STATION_NAME));
+            //stationName.setText(getArguments().getString(ARG_STATION_NAME));
             //lvResult.setAdapter(adapter);
 
             JourneyAdapter ja = new JourneyAdapter(myJourneys, getActivity());
