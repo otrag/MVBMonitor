@@ -56,7 +56,7 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
 
         journeyViewHolder.vTitle.setText(j.getLine()+"  "+j.getDirection());
         journeyViewHolder.vDepartTime.setText(j.getDepartTime());
-        if(j.getDelayMinutes()!= null)journeyViewHolder.vDepartTime.append("+ "+j.getDelayMinutes()+ "min");
+        if(j.getDelayMinutes()!= null)journeyViewHolder.vDepartTime.append(" +"+j.getDelayMinutes()+ "min");
 
         try {
             switch (j.getLine().substring(0, 3)) {

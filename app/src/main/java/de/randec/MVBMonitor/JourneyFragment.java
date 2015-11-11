@@ -24,7 +24,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +83,6 @@ import java.util.Calendar;
 
             String query = String.format(getString(R.string.queryJourneys),getArguments().getInt(ARG_STATION_ID),hours,minutes);
             Log.d("query2", query);
-            System.out.println(query);
             new DownloadJourneys().execute(query);
 
             return rootView;
@@ -113,7 +112,6 @@ import java.util.Calendar;
                 //journey json array contains the journeys
                 JSONArray jArray = allData.getJSONArray("journey");
 
-                //JSONArray jArray = new JSONArray(jsonData);
                 for(int i=0;i<jArray.length();i++) {
                     json = jArray.getJSONObject(i);
 
@@ -122,6 +120,7 @@ import java.util.Calendar;
                     String direction = json.getString("st");
                     if(direction.contains("Magdeburg,")) direction = direction.replace("Magdeburg,","");
                     String line = json.getString("pr");
+                    //get info about delay
                     JSONObject jsonDelay = json.getJSONObject("rt");
                     String status =jsonDelay.getString("status");
                     String delayMinutes =jsonDelay.getString("dlm");
