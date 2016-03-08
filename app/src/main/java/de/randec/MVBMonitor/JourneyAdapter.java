@@ -37,10 +37,12 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
 
     private ArrayList<Journey> journeyList;
     private Context mcontext;
+    //private StationFragment homeFragment;
 
     public JourneyAdapter(ArrayList<Journey> journeyList, Context mcontext) {
         this.mcontext = mcontext;
         this.journeyList = journeyList;
+        //this.homeFragment = homeFragment;
     }
 
 
@@ -54,9 +56,9 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
     public void onBindViewHolder(JourneyViewHolder journeyViewHolder, int i) {
         final Journey j = journeyList.get(i);
 
-        journeyViewHolder.vTitle.setText(j.getLine()+"  "+j.getDirection());
-        journeyViewHolder.vDepartTime.setText(j.getDepartTime());
-        if(j.getDelayMinutes()!= null)journeyViewHolder.vDepartTime.append(" +"+j.getDelayMinutes()+ "min");
+        journeyViewHolder.vTitle.setText(j.getLine() + "  " + j.getDirection());
+        journeyViewHolder.vDepartTime.setText(j.departString());
+
 
         try {
             switch (j.getLine().substring(0, 3)) {
@@ -167,7 +169,7 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
               SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yy/hh:mm");
                try {
                     //departure Date
-                   Date parsedDate = formatter.parse(j.getDepartDate()+"/"+j.getDepartTime());
+                   Date parsedDate = formatter.parse(j.getDepartDate()+"/"+j.getDelayTime());
                    Calendar cal = new GregorianCalendar();
                    //now
                    Calendar calNow = Calendar.getInstance();
@@ -180,9 +182,11 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
 
                        i.putExtra(AlarmClock.EXTRA_HOUR, cal.get(Calendar.HOUR_OF_DAY));
                        i.putExtra(AlarmClock.EXTRA_MINUTES, cal.get(Calendar.MINUTE));
+                       i.putExtra(AlarmClock.EXTRA_MESSAGE, j.getLine() + " Richtung " + j.getDirection());
+
                        mcontext.startActivity(i);
                    }else{
-                       Toast.makeText(mcontext,"Fehler",Toast.LENGTH_LONG).show();
+                       Toast.makeText(mcontext,"Die Bahn fährt gleich, jetzt loslaufen",Toast.LENGTH_LONG).show();
                    }
                }catch (ParseException e){
                    Log.d("exception","error parsing date");

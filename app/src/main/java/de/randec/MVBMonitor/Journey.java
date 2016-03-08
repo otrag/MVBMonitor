@@ -12,22 +12,25 @@
   */
 package de.randec.MVBMonitor;
 
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+
 public class Journey {
 
     String departTime;
     String departDate;
     String direction;
     String line;
-    String status;
     String delayMinutes;
     String delayTime;
 
-    public Journey(String departTime, String direction,String line, String departDate, String status, String delayMinutes, String delayTime) {
+    public Journey(String departTime, String direction,String line, String departDate, String delayMinutes, String delayTime) {
         setDepartTime(departTime);
         setDirection(direction);
         setLine(line);
         setDepartDate(departDate);
-        setStatus(status);
         setDelayMinutes(delayMinutes);
         setDelayTime(delayTime);
     }
@@ -36,17 +39,12 @@ public class Journey {
         return direction;
     }
 
-    public String getDepartTime() {
-        return departTime;
-    }
+    public String getDepartTime() {return departTime;}
 
-    public String getLine() {
-        return line;
-    }
+    public String getLine() {return line;}
 
     public String getDepartDate() {return departDate; }
 
-    public String getStatus() {return status; }
 
     public String getDelayMinutes() {return delayMinutes; }
 
@@ -60,21 +58,26 @@ public class Journey {
         this.direction = direction;
     }
 
-    public void setLine(String line) {
-        this.line = line;
-    }
+    public void setLine(String line) { this.line = line;}
 
     public void setDepartDate(String departDate) {this.departDate = departDate;}
-
-    public void setStatus(String status) {this.status = status;}
 
     public void setDelayMinutes(String delayMinutes) {this.delayMinutes = delayMinutes;}
 
     public void setDelayTime(String delayTime) {this.delayTime = delayTime;}
 
-    public String toString(){
-        return  "Linie: "+getLine()+"\n"+
-                "Zeit: "+getDepartTime()+"\n"+
-                "Richtung: "+getDirection();
+    public Spannable departString(){
+        String s;
+        //return a spannable to enable different colors in an single text
+        Spannable result;
+        s = getDepartTime();
+        if(!getDelayMinutes().equals("0")){
+            s+=(" +"+getDelayMinutes()+ "min");
+            result = new SpannableString(s);
+            result.setSpan(new ForegroundColorSpan(Color.RED),s.indexOf(" ")+1,s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        }
+        else result = new SpannableString(s);
+        return result;
     }
 }

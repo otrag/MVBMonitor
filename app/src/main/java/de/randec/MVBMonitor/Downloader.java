@@ -37,8 +37,7 @@ public class Downloader {
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         }
-        //Unabhängig von gewählter Kodierung enthalten die json daten escape codes für die umlaute
-        //z.B. &#228 für ä die unescape Methode wandelt sie wieder um
+        //unescape escape codes (Umlaute)
         return StringEscapeUtils.unescapeHtml4(data);
 
     }

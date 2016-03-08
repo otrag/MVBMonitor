@@ -37,21 +37,20 @@ import java.util.Calendar;
 /**
      * A placeholder fragment containing the recycler view.
      */
-    public class JourneyFragment extends Fragment {
+    public class StationFragment extends Fragment {
         /**
          * The fragment argument representing the station
          */
         private static final String ARG_STATION_ID = "station_id";
         private static final String ARG_STATION_NAME ="station_name";
 
-       // protected TextView stationName;
         protected RecyclerView recList;
 
         /**
          * Returns a new instance of this fragment for the given station
          */
-        public static JourneyFragment newInstance(int stationId,String stationName) {
-            JourneyFragment fragment = new JourneyFragment();
+        public static StationFragment newInstance(int stationId,String stationName) {
+            StationFragment fragment = new StationFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_STATION_ID, stationId);
             args.putString(ARG_STATION_NAME, stationName);
@@ -59,7 +58,7 @@ import java.util.Calendar;
             return fragment;
         }
 
-        public JourneyFragment() {
+        public StationFragment() {
         }
 
         @Override
@@ -95,6 +94,7 @@ import java.util.Calendar;
         private JSONObject json;
         private ArrayList<Journey> myJourneys;
 
+
         @Override
         protected String doInBackground(String... urls) {
 
@@ -122,10 +122,9 @@ import java.util.Calendar;
                     String line = json.getString("pr");
                     //get info about delay
                     JSONObject jsonDelay = json.getJSONObject("rt");
-                    String status =jsonDelay.getString("status");
                     String delayMinutes =jsonDelay.getString("dlm");
                     String delayTime =jsonDelay.getString("dlt");
-                    Journey myJourney = new Journey(departTime, direction, line, departDate, status, delayMinutes, delayTime);
+                    Journey myJourney = new Journey(departTime, direction, line, departDate, delayMinutes, delayTime);
                     myJourneys.add(myJourney);
 
                 }
@@ -142,10 +141,6 @@ import java.util.Calendar;
 
         protected void onPostExecute(String result){
             //getActivity returns the Context maybe check if not null
-           // ArrayAdapter<Journey> adapter = new ArrayAdapter<>(getActivity(),R.layout.list_item,myJourneys);
-
-            //stationName.setText(getArguments().getString(ARG_STATION_NAME));
-            //lvResult.setAdapter(adapter);
 
             JourneyAdapter ja = new JourneyAdapter(myJourneys, getActivity());
             recList.setAdapter(ja);

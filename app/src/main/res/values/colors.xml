@@ -32,5 +32,6 @@
 
     <color name="other">#ff838383</color>
 
+    <color name="late">#FF0000</color>
 
 </resources>

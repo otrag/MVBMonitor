@@ -68,11 +68,11 @@ public class MainActivity extends ActionBarActivity {
 
         if (!mGPSService.isLocationAvailable) {
 
-            // Here you can ask the user to try again, using return; for that
+            // ask the user to try again, using return; for that
             Toast.makeText(this, "Your location is not available, please try again.", Toast.LENGTH_SHORT).show();
             return;
 
-            // Or you can continue without getting the location, remove the return; above and uncomment the line given below
+            // continue without getting the location, remove the return; above and uncomment the line given below
             // address = "Location not available";
         } else {
 
@@ -138,8 +138,8 @@ public class MainActivity extends ActionBarActivity {
 
 
     /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of stations.
+     * A {@link FragmentPagerAdapter} that CREATES fragments corresponding to
+     * the stations.
      */
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
         private List<Fragment> fragments;
@@ -177,9 +177,6 @@ public class MainActivity extends ActionBarActivity {
             try{
 
                 jsonData = Downloader.downloadJson(urls[0]);
-                //jsonArray needs string to start with [
-                //jsonData = jsonData.substring(jsonData.indexOf('['));
-                //JSONArray jArray = new JSONArray(jsonData);
                 JSONObject allData = new JSONObject(jsonData);
 
 
@@ -191,7 +188,7 @@ public class MainActivity extends ActionBarActivity {
                     if(stopName.contains("Magdeburg,")) stopName = stopName.replace("Magdeburg,","");
                     if(stopName.contains("Magdeburg")) stopName = stopName.replace("Magdeburg","");
                     int stopId = Integer.parseInt(json.getString("extId"));
-                    fList.add(JourneyFragment.newInstance(stopId, stopName));
+                    fList.add(StationFragment.newInstance(stopId, stopName));
                 }
             }catch ( JSONException e) {
                 return "JSON conversion failed";
@@ -211,13 +208,6 @@ public class MainActivity extends ActionBarActivity {
 
             // Set up the ViewPager with the sections adapter.
             mViewPager = (ViewPager) findViewById(R.id.pager);
-            /*
-            Trying to get next page indicator
-            mViewPager.setPageMargin(-300);
-            mViewPager.setOffscreenPageLimit(2);
-            mViewPager.setHorizontalFadingEdgeEnabled(true);
-            mViewPager.setFadingEdgeLength(30);
-            */
             mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
