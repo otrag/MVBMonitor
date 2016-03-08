@@ -72,90 +72,90 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
         }catch (Exception e){
             Log.d("error","switch icon broken"+j.getLine()+"Linie");
         }
-
-        switch (j.getLine()){
-            case "Str    1":
+        Log.d("Line",j.getLine().replaceAll("\\s+",""));
+        switch (j.getLine().replaceAll("\\s+","")){
+            case "Str1":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str1));
                 break;
-            case "Str    2":
+            case "Str2":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str2));
                 break;
-            case "Str    3":
+            case "Str3":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str3));
                 break;
-            case "Str    4":
+            case "Str4":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str4));
                 break;
-            case "Str    5":
+            case "Str5":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str5));
                 break;
-            case "Str    6":
+            case "Str6":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str6));
                 break;
-            case "Str    8":
+            case "Str8":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str8));
                 break;
-            case "Str    9":
+            case "Str9":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str9));
                 break;
-            case "Str   10":
+            case "Str10":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str10));
                 break;
-            case "Str   93":
+            case "Str93":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str93));
                 break;
-            case "Str   94":
+            case "Str94":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str94));
                 break;
-            case "Str   95":
+            case "Str95":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Str95));
                 break;
-            case "Bus   51":
+            case "Bus51":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus51));
                 break;
-            case "Bus   52":
+            case "Bus52":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus52));
                 break;
-            case "Bus   53":
+            case "Bus53":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus53));
                 break;
-            case "Bus   54":
+            case "Bus54":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus54));
                 break;
-            case "Bus   55":
+            case "Bus55":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus55));
                 break;
-            case "Bus   56":
+            case "Bus56":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus56));
                 break;
-            case "Bus   57":
+            case "Bus57":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus57));
                 break;
-            case "Bus   58":
+            case "Bus58":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus58));
                 break;
-            case "Bus   59":
+            case "Bus59":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus59));
                 break;
-            case "Bus   61":
+            case "Bus61":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus61));
                 break;
-            case "Bus   69":
+            case "Bus69":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus69));
                 break;
-            case "Bus   71":
+            case "Bus71":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus71));
                 break;
-            case "Bus   73":
+            case "Bus73":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus73));
                 break;
-            case "Bus   91":
+            case "Bus91":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus91));
                 break;
-            case "Bus   92":
+            case "Bus92":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus92));
                 break;
-            case "Bus   96":
+            case "Bus96":
                 journeyViewHolder.vTitle.setBackgroundColor(journeyViewHolder.itemView.getResources().getColor(R.color.Bus96));
                 break;
             default:
@@ -182,7 +182,7 @@ public class JourneyAdapter extends RecyclerView.Adapter<JourneyAdapter.JourneyV
 
                        i.putExtra(AlarmClock.EXTRA_HOUR, cal.get(Calendar.HOUR_OF_DAY));
                        i.putExtra(AlarmClock.EXTRA_MINUTES, cal.get(Calendar.MINUTE));
-                       i.putExtra(AlarmClock.EXTRA_MESSAGE, j.getLine() + " Richtung " + j.getDirection());
+                       i.putExtra(AlarmClock.EXTRA_MESSAGE, j.getLine() + "  Richtung " + j.getDirection());
 
                        mcontext.startActivity(i);
                    }else{

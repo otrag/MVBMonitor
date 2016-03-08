@@ -78,7 +78,10 @@ import java.util.Calendar;
             //build the query for journeys from station
             Calendar cal = Calendar.getInstance();
             int hours=cal.get(Calendar.HOUR_OF_DAY);
-            int minutes=cal.get(Calendar.MINUTE);
+            int minu=cal.get(Calendar.MINUTE);
+            //minutes need to be converted since they require leading zero
+            String minutes = Integer.toString(minu);
+            if(minu<10) minutes = "0"+minu;
 
             String query = String.format(getString(R.string.queryJourneys),getArguments().getInt(ARG_STATION_ID),hours,minutes);
             Log.d("query2", query);
