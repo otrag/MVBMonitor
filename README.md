@@ -9,6 +9,6 @@ timetables for Magdeburg, Germany
 
 ##APK
 
-https://owncloud.randec.de/index.php/s/FM8fV0bT2rcDAZL
+https://owncloud.randec.de/index.php/s/TsiNRVR2T5OSPCd
 
 ![QR-Code](/files/qrcode.png)
